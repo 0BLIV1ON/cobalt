@@ -1,4 +1,4 @@
-<h1 align="center">:test_tube: Cobalt</h1>
+<h1 align="center">:gear: Cobalt</h1>
 <div align="center">A script hub that supports many games</div>
 <br>
 <div align="center">
