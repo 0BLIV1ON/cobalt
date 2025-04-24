@@ -33,6 +33,8 @@ local Aimbot = loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys
 local chams = loadstring(game:HttpGet("https://raw.githubusercontent.com/Stratxgy/Roblox-Chams-Highlight/refs/heads/main/Highlight.lua"))()
 local targethud = loadstring(game:HttpGet("https://raw.githubusercontent.com/Stratxgy/Lua-TargetHud/refs/heads/main/targethud.lua"))()
 local speed = loadstring(game:HttpGet("https://raw.githubusercontent.com/Stratxgy/Lua-Speed/refs/heads/main/speed.lua"))()
+local infiniteyield = loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+local flingall = loadstring(game:HttpGet("https://pastebin.com/raw/zqyDSUWX"))()
 
 local aimbotTab = Window:CreateTab("aimbot", "crosshair")
 
@@ -165,6 +167,50 @@ getgenv().speed = {
     friction = 2.0,
     keybind = Enum.KeyCode.KeypadDivide
 }
+
+local infiniteyieldTab = Window:CreateTab("Infinite Yield", "crosshair")
+
+local Section = infiniteyieldTab:CreateSection("Infinite Yield Settings")
+
+local Toggle = infiniteyieldTab:CreateToggle({
+    Name = "Enable Infinite Yield",
+    CurrentValue = false,
+    Flag = "Toggle1",
+    Callback = function(Value)
+        if Value then
+            infiniteyield()
+        else
+            Rayfield:Notify({
+                Title = "Infinite Yield",
+                Content = "Infinite Yield cannot be disabled once loaded.",
+                Duration = 5,
+                Image = 4483362458,
+            })
+        end
+    end,
+})
+
+local flingallTab = Window:CreateTab("Fling All", "crosshair")
+
+local Section = flingallTab:CreateSection("Fling All Settings")
+
+local Toggle = flingallTab:CreateToggle({
+    Name = "Enable Fling All",
+    CurrentValue = false,
+    Flag = "Toggle1",
+    Callback = function(Value)
+        if Value then
+            flingall()
+        else
+            Rayfield:Notify({
+                Title = "Fling All",
+                Content = "Fling All cannot be disabled once loaded.",
+                Duration = 5,
+                Image = 4483362458,
+            })
+        end
+    end,
+})
 
 Rayfield:Notify({
     Title = "Successful",
