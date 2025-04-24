@@ -1,7 +1,6 @@
-<h1 align="center">Cobalt</h1>
-<div align="center">A script hub for Roblox that has many games supported, it also has universal features.</div>
-<br>
-<div>&nbsp;</div>
+# Cobalt
+
+A script hub for Roblox that has many games supported, it also has universal features.
 
 ## Run cobalt
 
