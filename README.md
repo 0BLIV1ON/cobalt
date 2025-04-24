@@ -1,4 +1,4 @@
-<h1 align="center">:gear: Cobalt</h1>
+<h1 align="center">Cobalt</h1>
 <div align="center"> A script hub that supports many games on Roblox, it also has universal features. </div>
 <br>
 <div align="center">
