@@ -1,50 +1,174 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-    Name = "Cobalt Hub",
-    Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
-    LoadingTitle = "Cobalt Hub Loader",
-    LoadingSubtitle = "by OBLIV1ON",
-    Theme = "Serenity", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+    Name = "Cobalt",
+    Icon = 0,
+    LoadingTitle = "Cobalt Hub",
+    LoadingSubtitle = "by 0BLIV1ON",
+    Theme = "Serenity",
  
     DisableRayfieldPrompts = false,
-    DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
+    DisableBuildWarnings = false,
  
     ConfigurationSaving = {
        Enabled = true,
-       FolderName = nil, -- Create a custom folder for your hub/game
+       FolderName = cobalt,
        FileName = "Cobalt Hub"
     },
+
  
-    Discord = {
-       Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
-       Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
-       RememberJoins = true -- Set this to false to make them join the discord every time they load it up
-    },
- 
-    KeySystem = true, -- Set this to true to use our key system
+    KeySystem = true,
     KeySettings = {
-       Title = "Cobalt Key System",
+       Title = "Cobalt Key",
        Subtitle = "Key System",
-       Note = "Since Cobalt has just be released the key is RELEASE", -- Use this to tell the user how to get a key
-       FileName = "cobalt.key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
-       SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
-       GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-       Key = {https://zerobin.org/?cd4556b81cb37654#7eUasPD9yq4eKTQhcjc5PfXjj2wYRgd4QbHugXRAcZkv""} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+       Note = "Since Cobalt has just been released the key is RELEASE",
+       FileName = "cobalt.key",
+       SaveKey = true,
+       GrabKeyFromSite = true,
+       Key = {"https://raw.githubusercontent.com/0BLIV1ON/cobalt/main/keysystem/cobalt.key"}
     }
- })
+}) 
 
-local Tab = Window:CreateTab("Tab Example", 4483362458) -- Title, Image
+local Aimbot = loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Aimbot-V3/main/src/Aimbot.lua"))()
+local chams = loadstring(game:HttpGet("https://raw.githubusercontent.com/Stratxgy/Roblox-Chams-Highlight/refs/heads/main/Highlight.lua"))()
+local targethud = loadstring(game:HttpGet("https://raw.githubusercontent.com/Stratxgy/Lua-TargetHud/refs/heads/main/targethud.lua"))()
+local speed = loadstring(game:HttpGet("https://raw.githubusercontent.com/Stratxgy/Lua-Speed/refs/heads/main/speed.lua"))()
 
-local Tab = Window:CreateTab("Tab Example", "rewind")
+local aimbotTab = Window:CreateTab("aimbot", "crosshair")
 
-local Section = Tab:CreateSection("Section Example")
+local Section = aimbotTab:CreateSection("Aimbot Settings")
 
-Section:Set("Section Example")
+local Toggle = aimbotTab:CreateToggle({
+    Name = "Aimbot",
+    CurrentValue = false,
+    Flag = "Toggle1",
+    Callback = function(Value)
+        Aimbot.Load()
+    end,
+})
 
-local Divider = Tab:CreateDivider()
+local Toggle = aimbotTab:CreateToggle({
+    Name = "fov",
+    CurrentValue = false,
+    Flag = "Toggle1",
+    Callback = function(Value)
+        getgenv().ExunysDeveloperAimbot.FOVSettings.Visible = Value
+    end,
+})
 
-Divider:Set(false) -- Whether the divider's visibility is to be set to true or false.
+local Slider = aimbotTab:CreateSlider({
+    Name = "fov",
+    Range = {0, 500},
+    Increment = 10,
+    Suffix = "fov",
+    CurrentValue = 50,
+    Flag = "Slider1",
+    Callback = function(Value)
+        getgenv().ExunysDeveloperAimbot.FOVSettings.Radius = Value
+    end,
+})
 
-Rayfield:Destroy()
+local ColorPicker = aimbotTab:CreateColorPicker({
+    Name = "Color fov",
+    Color = Color3.fromRGB(255,255,255),
+    Flag = "ColorPicker1",
+    Callback = function(Value)
+        getgenv().ExunysDeveloperAimbot.FOVSettings.Color = Value
+    end
+})
 
+local Keybind = aimbotTab:CreateKeybind({
+    Name = "aimbot bind",
+    CurrentKeybind = "MB2",
+    HoldToInteract = true,
+    Flag = "Keybind1",
+    Callback = function(Keybind)
+        getgenv().ExunysDeveloperAimbot.Settings.TriggerKey = Value
+    end,
+})
+
+local visualsTab = Window:CreateTab("Visuals", "crosshair")
+
+local Section = visualsTab:CreateSection("chams")
+
+local Toggle = visualsTab:CreateToggle({
+    Name = "Chams",
+    CurrentValue = false,
+    Flag = "Toggle1",
+    Callback = function(Value)
+        getgenv().chams.enabled = Value
+    end,
+})
+
+local Slider = visualsTab:CreateSlider({
+    Name = "Slider Example",
+    Range = {0, 1},
+    Increment = 1,
+    Suffix = "Bananas",
+    CurrentValue = 0,
+    Flag = "Slider1",
+    Callback = function(Value)
+        getgenv().chams.fillTransparency = Value
+    end,
+})
+
+local Section = visualsTab:CreateSection("targethud")
+
+local Toggle = visualsTab:CreateToggle({
+    Name = "Target Hud",
+    CurrentValue = false,
+    Flag = "Toggle1",
+    Callback = function(Value)
+        getgenv().targethud.enabled = Value
+    end,
+})
+
+local playerTab = Window:CreateTab("Player", "crosshair")
+
+local Section = playerTab:CreateSection("Super Speed")
+
+local Toggle = playerTab:CreateToggle({
+    Name = "Super Speed",
+    CurrentValue = false,
+    Flag = "Toggle1",
+    Callback = function(Value)
+        getgenv().speed.enabled = Value
+    end,
+})
+
+local Slider = playerTab:CreateSlider({
+    Name = "Super Speed Amount",
+    Range = {0, 1000},
+    Increment = 1,
+    Suffix = "Speed Amount",
+    CurrentValue = 0,
+    Flag = "Slider1",
+    Callback = function(Value)
+        getgenv().speed.speed = Value
+    end,
+})
+
+local Keybind = playerTab:CreateKeybind({
+    Name = "Activate Super Speed",
+    CurrentKeybind = "divide",
+    HoldToInteract = false,
+    Flag = "Keybind1",
+    Callback = function(Keybind)
+        getgenv().speed.keybind = Keybind
+    end,
+})
+
+getgenv().speed = {
+    enabled = false,
+    speed = 16,
+    control = false,
+    friction = 2.0,
+    keybind = Enum.KeyCode.KeypadDivide
+}
+
+Rayfield:Notify({
+    Title = "Successful",
+    Content = "Cobalt Hub has loaded!",
+    Duration = 6.5,
+    Image = 4483362458,
+})
