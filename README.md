@@ -6,3 +6,8 @@
 	<a href="https://github.com/0BLIV1ON/cobalt/releases/latest"><img src="https://img.shields.io/github/v/release/0BLIV1ON/cobalt?include_prereleases" alt="Latest Release" /></a>
 </div>
 <div>&nbsp;</div>
+
+```lua
+loadstring(game:HttpGet("https://raw.githubusercontent.com/0BLIV1ON/cobalt/main/cobalt.lua")
+)()
+```
