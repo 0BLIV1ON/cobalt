@@ -1,4 +1,4 @@
-<h1 align="center">:gear: Cobalt</h1>
+<h1 align="center">:gear: Cobalt Hub</h1>
 <div align="center">A script hub that supports many games</div>
 <br>
 <div align="center">
@@ -6,4 +6,3 @@
 </div>
 <div>&nbsp;</div>
 
-# Cobalt Hub
